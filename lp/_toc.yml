@@ -1,0 +1,16 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: 基本介绍
+    chapters:
+    - file: intro/intro
+  - caption: 算法
+    chapters:
+    - file: algorithm/pivot
+    - file: algorithm/pivot_mad
+    - file: algorithm/simplex
+    - file: algorithm/duality
+    - file: algorithm/cycling
