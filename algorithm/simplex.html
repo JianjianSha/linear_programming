@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>单纯形法 &#8212; 线性规划翻译稿</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="泛化对偶性" href="duality.html" />
+    <link rel="prev" title="单纯形法" href="pivot_mad.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">线性规划翻译稿</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  基本介绍
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro/intro.html">
+   简介
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  算法
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="pivot.html">
+   转轴操作
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pivot_mad.html">
+   单纯形法
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   单纯形法
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="duality.html">
+   泛化对偶性
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cycling.html">
+   循环
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/algorithm/simplex.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/JianjianSha/linear_programming"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/JianjianSha/linear_programming/issues/new?title=Issue%20on%20page%20%2Falgorithm/simplex.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   转轴规则
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   对偶单纯形法
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>单纯形法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>单纯形法是在疯狂转轴法的基础之上，增加一些关键要素，这些关键要素指导如何更有效地选择转轴点。假设经过若干次转轴操作之后，得到以下单纯形表，</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{c|c|c}
+&amp; \mathbf r &amp;\\
+\hline
+\mathbf t &amp; A &amp; \mathbf b\\
+\hline
+&amp; -\mathbf c &amp; v\end{array}\end{split}\]</div>
+<p>并且其中 <span class="math notranslate nohighlight">\(\mathbf b \ge \mathbf 0\)</span>，那么我们可以立即得到对于 <strong>最大化问题</strong> 的一个可行点：令 <span class="math notranslate nohighlight">\(\mathbf r=\mathbf 0\)</span>，那么 <span class="math notranslate nohighlight">\(\mathbf {t = b}\)</span>，此时目标值为 <span class="math notranslate nohighlight">\(v\)</span>。这是因为转轴操作不改变 <span class="math notranslate nohighlight">\(\mathbf u=\mathbf b-A\mathbf x\)</span> 这个约束条件中的等式关系，且 <span class="math notranslate nohighlight">\(\mathbf r=\mathbf 0, \ \mathbf {t=b}\ge \mathbf 0\)</span>，又因为 <span class="math notranslate nohighlight">\(\mathbf {r,t}\)</span> 是交换 <span class="math notranslate nohighlight">\(\mathbf {x,u}\)</span> 中部分变量得到，故满足 <span class="math notranslate nohighlight">\(\mathbf {x, u} \ge \mathbf 0\)</span> 这个约束条件，所以，<span class="math notranslate nohighlight">\(\mathbf r=\mathbf 0\)</span>， <span class="math notranslate nohighlight">\(\mathbf {t = b}\)</span> 是一个可行点。实际上，这个可行点也是可行区域的一个极点。记原未知向量 <span class="math notranslate nohighlight">\(\mathbf x\)</span> 交换出去的变量数量为 <span class="math notranslate nohighlight">\(k\)</span>，交换出去的变量下标为 <span class="math notranslate nohighlight">\(j_1,\cdots,j_k\)</span>，未知向量长度为 <span class="math notranslate nohighlight">\(n\)</span>，那么</p>
+<div class="math notranslate nohighlight" id="equation-sim1">
+<span class="eqno">(12)<a class="headerlink" href="#equation-sim1" title="Permalink to this equation">¶</a></span>\[x_j=0, \ j=j_{k+1},\cdots, j_n\]</div>
+<p>另外 <span class="math notranslate nohighlight">\(k\)</span> 个松弛变量 <span class="math notranslate nohighlight">\(u_i=0, \ i=i_1,\cdots, i_k\)</span> （因为它们组成了 <span class="math notranslate nohighlight">\(\mathbf r\)</span>，而 <span class="math notranslate nohighlight">\(\mathbf {r=0}\)</span>），根据后者有</p>
+<div class="math notranslate nohighlight" id="equation-sim2">
+<span class="eqno">(13)<a class="headerlink" href="#equation-sim2" title="Permalink to this equation">¶</a></span>\[u_i=A_{i,:}\mathbf x-b_i=0, \quad i=i_1,\cdots, i_k\]</div>
+<p>根据 <a class="reference internal" href="#equation-sim1">(12)</a> 和 <a class="reference internal" href="#equation-sim2">(13)</a> 一共有 <span class="math notranslate nohighlight">\(n\)</span> 个关于 <span class="math notranslate nohighlight">\(\mathbf x\)</span> 的等式（与 <span class="math notranslate nohighlight">\(\mathbf u\)</span> 无关），再由约束集的性质可知，此时 <span class="math notranslate nohighlight">\(\mathbf x\)</span> 是极点。<span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p>类似地，如果经过转轴变换，使得 <span class="math notranslate nohighlight">\(-\mathbf c \ge \mathbf 0\)</span>，那么我们可以令 <span class="math notranslate nohighlight">\(\mathbf {t=0}\)</span>，从而 <span class="math notranslate nohighlight">\(\mathbf r=\mathbf t^{\top}A -\mathbf c=-\mathbf c\)</span>，这也是最小化问题的一个可行解。</p>
+<div class="section" id="id2">
+<h2>转轴规则<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>首先考虑已经发现了最大化问题的一个可行解 这种情况。</p>
+<p><strong>情况1：</strong> <span class="math notranslate nohighlight">\(\mathbf b \ge \mathbf 0\)</span></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>取最后一个元素值为负的任意一列，记这列为 <span class="math notranslate nohighlight">\(j_0\)</span>，满足 <span class="math notranslate nohighlight">\(-c_{j_0} &lt; 0\)</span>。在所有 <span class="math notranslate nohighlight">\(a_{i,j_0} &gt; 0\)</span> 的行中，选择比值 <span class="math notranslate nohighlight">\(b_i/a_{i,j_0}\)</span> 最小的那一行，如果有多个比值最小，任选其中一行即可，记选择的行为 <span class="math notranslate nohighlight">\(i_0\)</span>，以 <span class="math notranslate nohighlight">\(a_{i_0,j_0}\)</span> 为转轴点进行转轴。</p>
+</div>
+<p>对于情况 1，如果找不到这样的转轴点，该怎么办？</p>
+<p>第一种可能是：所有列的 <span class="math notranslate nohighlight">\(-c_j \ge 0\)</span>，那么根据上一篇文章的分析，已经得到最优解和目标最优值。</p>
+<p>第二种可能是：在找到某列的 <span class="math notranslate nohighlight">\(-c_{j_0} &lt;0\)</span> 之后，这列的所有行元素 <span class="math notranslate nohighlight">\(a_{i,j_0} \le 0\)</span>，没有正值，也就无法求比值。如果是这种可能，那么 <strong>最大化问题的目标值没有边界</strong> 。为了理解这点，构造一个 <span class="math notranslate nohighlight">\(\mathbf r\)</span>，满足 <span class="math notranslate nohighlight">\(r_{j_0}&gt;0\)</span>，且 <span class="math notranslate nohighlight">\(r_j=0, \ \forall j \neq j_0\)</span>，那么这个 <span class="math notranslate nohighlight">\(\mathbf r\)</span> 是最大化问题的一个可行解，因为根据 <span class="math notranslate nohighlight">\(\mathbf t = \mathbf b - A\mathbf r\)</span></p>
+<div class="math notranslate nohighlight">
+\[t_i=\sum_{j=1}^n (-a_{i,j}) r_j+b_i=-a_{i,j_0}+b_i \ge 0, \quad \forall i \in [m]\]</div>
+<p>满足约束条件。此时，目标值为</p>
+<div class="math notranslate nohighlight">
+\[\hat {\mathbf c}^{\top} \mathbf x=\hat{\mathbf c}^{\top}\mathbf r+\hat v=\sum c_j r_j+\hat v = c_{j_0}r_{j_0} + \hat v\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\hat v\)</span> 是此时表中右下角元素值，与 <span class="math notranslate nohighlight">\(\mathbf x, \ \mathbf r\)</span> 均无关，而 <span class="math notranslate nohighlight">\(r_{j_0}\)</span> 可以是任意大，所以目标值无上边界。<span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p>这个转轴规则非常好用，因为：</p>
+<ol class="simple">
+<li><p>转轴操作之后，<span class="math notranslate nohighlight">\(\mathbf b\)</span> 列仍然保持非负，依然可以得到最大化问题的一个可行解：令 <span class="math notranslate nohighlight">\(\mathbf {r=0}\)</span>（另一个极点）。</p></li>
+<li><p>转轴操作之后，目标值不会比原先的小（向着正确方向迭代更新）。</p></li>
+</ol>
+<p>证 1 ：</p>
+<p>记转轴之后的单纯形表中各 参量/变量 有 ^ 符号。转轴点为 <span class="math notranslate nohighlight">\(a_{i_0,j_0}\)</span>，那么根据同行元素除以转轴点值的变换规则，<span class="math notranslate nohighlight">\(\hat b_{i_0}=b_{i_0}/a_{i_0,j_0}\)</span>，由于 <span class="math notranslate nohighlight">\(b_{i_0} \ge 0\)</span>，且 <span class="math notranslate nohighlight">\(a_{i_0,j_0} &gt;0\)</span>，那么 <span class="math notranslate nohighlight">\(\hat b_{i_)} \ge 0\)</span>。对于不同行 <span class="math notranslate nohighlight">\(i \neq i_0\)</span>，有</p>
+<div class="math notranslate nohighlight">
+\[\hat b_i=b_i - \frac {b_{i_0}a_{i,j_0}} {a_{i_0,j_0}}\]</div>
+<p>如果 <span class="math notranslate nohighlight">\(a_{i,j_0} \le 0\)</span>，那么 <span class="math notranslate nohighlight">\(\hat b_i \ge b_i \ge 0\)</span>，如果 <span class="math notranslate nohighlight">\(a_{i,j_0} &gt;0\)</span>，根据上面的转轴规则，我们选取的是比值最小的那一行作为转轴点，即 <span class="math notranslate nohighlight">\(b_i / a_{i,j_0} \ge b_{i_0}/a_{i_0,j_0}\)</span>，于是 <span class="math notranslate nohighlight">\(b_i \ge b_{i_0}a_{i,j_0}/a_{i_0,j_0}\)</span>，故 <span class="math notranslate nohighlight">\(\hat b_i \ge 0\)</span> 。 <span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p>证 2 ：</p>
+<p><span class="math notranslate nohighlight">\(\hat v = v - (-c_{j_0})(b_{i_0}/a_{i_0,j_0})\)</span>，由于 <span class="math notranslate nohighlight">\(-c_{j_0} &lt; 0\)</span>，且 <span class="math notranslate nohighlight">\(a_{i_0,j_0}&gt;0\)</span>，<span class="math notranslate nohighlight">\(b_{i_0}\ge 0\)</span>，所以 <span class="math notranslate nohighlight">\(\hat v \ge v\)</span>。<span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p>如果没有出现情况1，那么该如何选择转轴点？这就是情况2 考虑的问题了。</p>
+<p><strong>情况 2</strong>：部分 <span class="math notranslate nohighlight">\(b_i &lt; 0\)</span></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>取第一个为负值的 b，记下标为 <span class="math notranslate nohighlight">\(k\)</span>，即 <span class="math notranslate nohighlight">\(b_k &lt;0\)</span>，且 <span class="math notranslate nohighlight">\(b_i\ge 0, \ i=1,\cdots k-1\)</span>。在第 <span class="math notranslate nohighlight">\(k\)</span> 行寻找负值的任一元素，例如 <span class="math notranslate nohighlight">\(a_{k,j_0} &lt;0\)</span>，比较 <span class="math notranslate nohighlight">\(b_k/a_{k,j_0}\)</span> 和 <span class="math notranslate nohighlight">\(b_i/a_{i,j_0}\)</span>，其中后者需要满足 <span class="math notranslate nohighlight">\(b_i \ge 0\)</span> 以及 <span class="math notranslate nohighlight">\(a_{i,j_0} &gt;0\)</span>（否则不参与比较），选择比值最小的一行（比值最小可为0），记行号为 <span class="math notranslate nohighlight">\(i_0\)</span>（可能有 <span class="math notranslate nohighlight">\(i_0=k\)</span>），如果最小比值不止一个，那么任意选择其中一行。以 <span class="math notranslate nohighlight">\(a_{i_0,j_0}\)</span> 为转轴点。</p>
+</div>
+<p>如果情况 2 中无法实现上述操作该怎么办？唯一的可能是，对于找到的 <span class="math notranslate nohighlight">\(b_k &lt;0\)</span>，结果 <span class="math notranslate nohighlight">\(a_{kj} \ge 0, \ \forall j \in [n]\)</span>，如果是这样，那么 <strong>最大化问题没有可行解</strong>。这是因为，对于第 <span class="math notranslate nohighlight">\(k\)</span> 行，</p>
+<div class="math notranslate nohighlight">
+\[t_k=b_k-\sum_{j=1}^n a_{kj} r_j\]</div>
+<p>根据约束条件，<span class="math notranslate nohighlight">\(\mathbf t \ge \mathbf 0\)</span>，<span class="math notranslate nohighlight">\(\mathbf r \ge \mathbf 0\)</span>，所以 <span class="math notranslate nohighlight">\(\sum a_{kj} r_j \ge 0\)</span>，而 <span class="math notranslate nohighlight">\(b_k &lt;0\)</span>，所以 <span class="math notranslate nohighlight">\(t_k&lt;0\)</span> 矛盾。</p>
+<p>情况 2 的操作是为了能得到情况 1，因为</p>
+<ol class="simple">
+<li><p>对于非负的 <span class="math notranslate nohighlight">\(b_i\)</span>，经过情况 2 的转轴操作后，依然保持非负。</p></li>
+<li><p><span class="math notranslate nohighlight">\(b_k\)</span> 变得不会更小（逐步变大，直到转为非负）。</p></li>
+</ol>
+<p>证 1：</p>
+<p>对于非负的 b 值，即 <span class="math notranslate nohighlight">\(b_i \ge 0\)</span>，显然 <span class="math notranslate nohighlight">\(i \neq k\)</span>。如果 <span class="math notranslate nohighlight">\(i=i_0\)</span>，那么 <span class="math notranslate nohighlight">\(\hat b_{i_0}=b_{i_0}/a_{i_0,j_0} \ge 0\)</span>。 如果 <span class="math notranslate nohighlight">\(i \neq i_0\)</span>，那么</p>
+<div class="math notranslate nohighlight">
+\[\hat b_i=b_i-\frac {a_{i,j_0}b_{i_0}}{a_{i_0,j_0}}\]</div>
+<p>由于 <span class="math notranslate nohighlight">\(b_{i_0}/a_{i_0,j_0}\ge0\)</span>，故 如果 <span class="math notranslate nohighlight">\(a_{i,j_0} \le 0\)</span>，那么 <span class="math notranslate nohighlight">\(\hat b_i \le b_i \ge 0\)</span>，如果 <span class="math notranslate nohighlight">\(a_{i,j_0} &gt;0\)</span>，那么转轴点的行具有最小比例，即 <span class="math notranslate nohighlight">\(b_{i_0}/a_{i_0,j_0} \le b_i/a_{i,j_0}\)</span>，所以 <span class="math notranslate nohighlight">\(a_{i,j_0}b_{i_0}/a_{i_0,j_0} \le b_i\)</span>，于是 <span class="math notranslate nohighlight">\(\hat b_i \ge 0\)</span> 。<span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p>证 2：</p>
+<p>如果 <span class="math notranslate nohighlight">\(k=i_0\)</span>，那么 <span class="math notranslate nohighlight">\(\hat b_k = b_k /a_{k,j_0} &gt;0\)</span> （分子分母均为负），如果 <span class="math notranslate nohighlight">\(k \neq i_0\)</span>，那么</p>
+<div class="math notranslate nohighlight">
+\[\hat b_k = b_k - \frac {a_{k,j_0}b_{i_0}}{a_{i_0,j_0}}\]</div>
+<p>既然 <span class="math notranslate nohighlight">\(a_{k,j_0} &lt;0\)</span>，且转轴点比例 <span class="math notranslate nohighlight">\(b_{i_0}/a_{i_0,j_0} \ge 0\)</span>，于是 <span class="math notranslate nohighlight">\(\hat b_k \ge b_k\)</span> 。 <span class="math notranslate nohighlight">\(\Box\)</span></p>
+</div>
+<div class="section" id="id3">
+<h2>对偶单纯形法<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>上面的单纯形法是从最大化问题开始分析。当然也可以从最小化问题开始分析。当出现一个最小化问题的可行解时（即，单纯形表最后一行全部非负，此时令左侧为 0，顶部元素等于最后一行值，得到一个可行解），可以更加有效地（向着最优解的方向）优化这个可行解。</p>
+<p><strong>情况 1</strong>： <span class="math notranslate nohighlight">\(-\mathbf c \ge \mathbf 0\)</span></p>
+<p>任取最后一列为负值的行，例如 <span class="math notranslate nohighlight">\(b_{i_0} &lt;0\)</span>，然后对于满足 <span class="math notranslate nohighlight">\(a_{i_0,j}&lt;0\)</span> 的列，选择 <span class="math notranslate nohighlight">\(-c_j/a_{i_0,j}\)</span> 最大的那一列，由于 <span class="math notranslate nohighlight">\(-c_j/a_{i_0,j}&lt;0\)</span>，相当于选择最接近 0 的那一列，记列号 为 <span class="math notranslate nohighlight">\(j_0\)</span>，转轴点为 <span class="math notranslate nohighlight">\(a_{i_0,j_0}\)</span> 。</p>
+<p><strong>情况 2</strong>： 部分 <span class="math notranslate nohighlight">\(-c_j &lt;0\)</span></p>
+<p>取第一个负值 <span class="math notranslate nohighlight">\(-c_k &lt; 0\)</span>，此时 <span class="math notranslate nohighlight">\(-c_j \ge 0, \ \forall j =1,\cdots,k-1\)</span>。 在第 <span class="math notranslate nohighlight">\(k\)</span> 列中寻找任一正值元素，记行号为 <span class="math notranslate nohighlight">\(i_0\)</span>，即 <span class="math notranslate nohighlight">\(a_{i_0,k} &gt;0\)</span>。比较 <span class="math notranslate nohighlight">\(-c_k/a_{i_0,k}\)</span> 以及 <span class="math notranslate nohighlight">\(-c_j/a_{i_0,j}\)</span> ，其中满足 <span class="math notranslate nohighlight">\(-c_j \ge 0\)</span> 以及 <span class="math notranslate nohighlight">\(a_{i_0,j} &lt;0\)</span>，故 <span class="math notranslate nohighlight">\(-c_k/a_{i_0,k}\)</span> 和 <span class="math notranslate nohighlight">\(-c_j/a_{i_0,j}\)</span> 均非正，选择最大的，也就是最接近 0 的那个列，记为 <span class="math notranslate nohighlight">\(j_0\)</span>（可能有 <span class="math notranslate nohighlight">\(j_0=k\)</span>），以 <span class="math notranslate nohighlight">\(a_{i_0,j_0}\)</span> 作为转轴点。</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./algorithm"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="pivot_mad.html" title="previous page">单纯形法</a>
+    <a class='right-next' id="next-link" href="duality.html" title="next page">泛化对偶性</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By JianjianSha<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>简介 &#8212; 线性规划翻译稿</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="转轴操作" href="../algorithm/pivot.html" />
+    <link rel="prev" title="前言" href="../intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">线性规划翻译稿</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  基本介绍
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   简介
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  算法
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../algorithm/pivot.html">
+   转轴操作
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../algorithm/pivot_mad.html">
+   单纯形法
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../algorithm/simplex.html">
+   单纯形法
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../algorithm/duality.html">
+   泛化对偶性
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../algorithm/cycling.html">
+   循环
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/intro/intro.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/JianjianSha/linear_programming"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/JianjianSha/linear_programming/issues/new?title=Issue%20on%20page%20%2Fintro/intro.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   标准形式
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   对偶
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     定义
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     性质
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>线性规划指 最大化/最小化 一个线性函数，且未知量满足一系列的线性约束条件，例如，最大化 <span class="math notranslate nohighlight">\(x_1+x_2\)</span>，其中约束条件为 <span class="math notranslate nohighlight">\(x_1, \ x_2\ge 0\)</span>，且</p>
+<div class="math notranslate nohighlight" id="equation-lp1">
+<span class="eqno">(1)<a class="headerlink" href="#equation-lp1" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}x_1+2x_2 &amp; \le 4 \\
+4x_1+2x_2 &amp; \le 12 \\
+-x_1+x_2 &amp; \le 1 \end{aligned}\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\mathbf x=(x_1,x_2)\)</span> 为要求的未知向量，这个例子中是二维情况，所以可以借助几何图形，直观地求解最优解，最优解为 <span class="math notranslate nohighlight">\(x_1=8/3, \ x_2=2/3\)</span>，但是对于高维，这个方法就不好处理了。</p>
+<div class="section" id="id2">
+<h2>标准形式<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>标准最大化问题：求解 <span class="math notranslate nohighlight">\(\mathbf x \in \mathbb R^n\)</span>，使得</p>
+<div class="math notranslate nohighlight" id="equation-lp2">
+<span class="eqno">(2)<a class="headerlink" href="#equation-lp2" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned} \max \ &amp; \mathbf c^{\top} \mathbf x
+\\ s.t. \ &amp; A \mathbf x \le \mathbf b
+\\ &amp; \mathbf x \ge \mathbf 0
+\end{aligned}\end{split}\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(A \in \mathbb R^{m,n}, \ \mathbf b \in \mathbb R^m, \ \mathbf c \in \mathbb R^n\)</span> 。</p>
+<p>标准最小化问题：求解 <span class="math notranslate nohighlight">\(\mathbf y \in \mathbb R^m\)</span>，使得</p>
+<div class="math notranslate nohighlight" id="equation-lp3">
+<span class="eqno">(3)<a class="headerlink" href="#equation-lp3" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned} \min \ &amp; \mathbf y^{\top} \mathbf b
+\\ s.t. \ &amp;  \mathbf y^{\top}A \ge \mathbf c^{\top}
+\\ &amp; \mathbf y \ge \mathbf 0
+\end{aligned}\end{split}\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(A \in \mathbb R^{m,n}, \ \mathbf b \in \mathbb R^m, \ \mathbf c \in \mathbb R^n\)</span> 。</p>
+</div>
+<div class="section" id="id3">
+<h2>对偶<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>定义<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#equation-lp2">(2)</a> 式所描述的最大化问题的对偶问题为 <a class="reference internal" href="#equation-lp3">(3)</a> 所描述的最小化问题，这两个线性规划问题共享参数<span class="math notranslate nohighlight">\(A \in \mathbb R^{m,n}, \ \mathbf b \in \mathbb R^m, \ \mathbf c \in \mathbb R^n\)</span> 。</p>
+<p>例如上面的 <a class="reference internal" href="#equation-lp1">(1)</a> 式问题，其对偶问题为：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned} \min \ &amp; 4y_1+12y_2+y_3
+\\ s.t. \ &amp; y_1+4y_2-y_3 \ge 1
+\\ &amp; 2y_1+2y_2+y_3 \ge 1
+\end{aligned}\end{split}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>每个线性规划问题都有一个对偶线性规划问题，且这两个线性规划问题互为对偶。</p>
+</div>
+<p>将 <a class="reference internal" href="#equation-lp3">(3)</a> 的最小化问题的参数均乘以 <span class="math notranslate nohighlight">\(-1\)</span>，就可以转化为最大化问题，注意，对不等式两边取矩阵转置，不等号不变，</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned} \max \ &amp; (-\mathbf b^{\top}) \mathbf y
+\\ s.t. \ &amp;  (-A^{\top})\mathbf y\le -\mathbf c
+\\ &amp; \mathbf y \ge \mathbf 0
+\end{aligned}\end{split}\]</div>
+<p>根据对偶的定义，可以得到这个最大化问题的对偶问题，</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned} \min \ &amp; \mathbf x^{\top} (-\mathbf c)
+\\ s.t. \ &amp; \mathbf x^{\top} (-A^{\top})\ge -\mathbf b^{\top}
+\\ &amp; \mathbf x \ge \mathbf 0
+\end{aligned}\end{split}\]</div>
+<p>将参数分别乘以 <span class="math notranslate nohighlight">\(-1\)</span>，就可以将上述问题转换为最大化问题（当然，还需要两边进行转置），这与 <a class="reference internal" href="#equation-lp2">(2)</a> 完全相同。</p>
+</div>
+<div class="section" id="id5">
+<h3>性质<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>满足约束条件的解称为 <strong>可行解</strong>。下面考虑对偶的几个性质。</p>
+<p><span class="math notranslate nohighlight">\(\bigtriangleup\)</span> <strong>定理1：</strong> 如果 <span class="math notranslate nohighlight">\(\mathbf x\)</span> 是 <a class="reference internal" href="#equation-lp2">(2)</a> 的可行解，<span class="math notranslate nohighlight">\(\mathbf y\)</span> 是 <a class="reference internal" href="#equation-lp3">(3)</a> 的可行解，那么有</p>
+<div class="math notranslate nohighlight" id="equation-lp4">
+<span class="eqno">(4)<a class="headerlink" href="#equation-lp4" title="Permalink to this equation">¶</a></span>\[\mathbf c^{\top} \mathbf x \le \mathbf y^{\top} \mathbf b\]</div>
+<p>证：
+$<span class="math notranslate nohighlight">\(\mathbf c^{\top} \mathbf x \le \mathbf y^{\top}A \mathbf x \le \mathbf y^{\top}\mathbf b\)</span>$</p>
+<p>根据 <a class="reference internal" href="#equation-lp3">(3)</a>，<span class="math notranslate nohighlight">\(\mathbf c^{\top} \le \mathbf y^{\top}A\)</span>，当 <span class="math notranslate nohighlight">\(\mathbf x \ge 0\)</span> 时，有第一个不等关系成立。（可以用一维情况帮助理解：当 <span class="math notranslate nohighlight">\(x\ge 0\)</span> 时，固定 <span class="math notranslate nohighlight">\(x\)</span> 值，<span class="math notranslate nohighlight">\(xz\)</span> 是 <span class="math notranslate nohighlight">\(z\)</span> 的增函数）</p>
+<p>类似地 根据 <a class="reference internal" href="#equation-lp2">(2)</a>，可以得到第二个不等关系成立。<span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p><span class="math notranslate nohighlight">\(\bigtriangleup\)</span> <strong>结论1：</strong> 互为对偶的两个标准问题均是可行的（指 可行集不为空），那么它们都是有界可行（指 目标函数在可行集上有界）。</p>
+<p>证：令 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 是最小化问题的一个可行解，那么对于任意一个可行解 <span class="math notranslate nohighlight">\(\mathbf x\)</span>，根据 <a class="reference internal" href="#equation-lp4">(4)</a> 式可知最大化问题的目标函数有<strong>上界</strong>。类似地，可知最小化问题在可行集上有<strong>下界</strong>。<span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p><span class="math notranslate nohighlight">\(\bigtriangleup\)</span> <strong>结论2：</strong> 如果 <span class="math notranslate nohighlight">\(\mathbf x^{\star}, \ \mathbf y^{\star}\)</span> 分别是 <a class="reference internal" href="#equation-lp2">(2)</a> 和 <a class="reference internal" href="#equation-lp3">(3)</a> 式的可行解，且满足 <span class="math notranslate nohighlight">\(\mathbf c^{\top}\mathbf x^{\star}=\mathbf y^{\star \top}\mathbf b\)</span>，那么它们分别是各自问题的最优解。</p>
+<p>证：令 <span class="math notranslate nohighlight">\(\mathbf x\)</span> 是 <a class="reference internal" href="#equation-lp2">(2)</a> 的任意一个可行解，那么根据 <a class="reference internal" href="#equation-lp4">(4)</a> 式有 <span class="math notranslate nohighlight">\(\mathbf c^{\top}\mathbf x \le \mathbf y^{\star\top}\mathbf b=\mathbf c^{\top}\mathbf x^{\star}\)</span>，故 <span class="math notranslate nohighlight">\(\mathbf x^{\star}\)</span> 是最优解。对称地可证 <span class="math notranslate nohighlight">\(\mathbf y^{\star}\)</span> 是 <a class="reference internal" href="#equation-lp3">(3)</a> 式的最优解。<span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p><span class="math notranslate nohighlight">\(\bigtriangleup\)</span> <strong>对偶定理：</strong> 如果一个标准线性规划问题是有界可行的，那么其对偶问题也是有界可行的，它们均存在最优解，且最优值相等。</p>
+<p>证明有些复杂，留待以后再证。</p>
+<p><span class="math notranslate nohighlight">\(\bigtriangleup\)</span> <strong>均衡定理：</strong> 如果 <span class="math notranslate nohighlight">\(\mathbf x^{\star}\)</span> 和 <span class="math notranslate nohighlight">\(\mathbf y^{\star}\)</span> 分别是 <a class="reference internal" href="#equation-lp2">(2)</a> 和 <a class="reference internal" href="#equation-lp3">(3)</a> 的可行解，那么它们分别是最优解当且仅当</p>
+<p>对所有满足 <span class="math notranslate nohighlight">\(\sum_{j=1}^n a_{ij}x_j^{\star}&lt;b_i\)</span> 的 <span class="math notranslate nohighlight">\(i\)</span> 有</p>
+<div class="math notranslate nohighlight" id="equation-lp5">
+<span class="eqno">(5)<a class="headerlink" href="#equation-lp5" title="Permalink to this equation">¶</a></span>\[y_i^{\star}=0\]</div>
+<p>并且，对所有满足 <span class="math notranslate nohighlight">\(\sum_{i=1}^m y_i^{\star}a_{ij}&gt;c_i\)</span> 的 <span class="math notranslate nohighlight">\(j\)</span> 有</p>
+<div class="math notranslate nohighlight" id="equation-lp6">
+<span class="eqno">(6)<a class="headerlink" href="#equation-lp6" title="Permalink to this equation">¶</a></span>\[x_j^{\star}=0\]</div>
+<p>证：<strong>当</strong> 根据 <a class="reference internal" href="#equation-lp5">(5)</a> 式，只有满足 <span class="math notranslate nohighlight">\(\sum_{j=1}^n a_{ij}x_j^{\star}=b_i\)</span> 的 <span class="math notranslate nohighlight">\(y_i^{\star} \neq 0\)</span>，</p>
+<div class="math notranslate nohighlight">
+\[\sum_{i=1}^m y_i^{\star} b_i=\sum_{i=1}^m y_i^{\star} \sum_{j=1}^n a_{ij}x_j^{\star}=\sum_{i=1}^m\sum_{j=1}^n y_i^{\star} a_{ij} x_j^{\star}\]</div>
+<p>类似地根据 <a class="reference internal" href="#equation-lp6">(6)</a> 式有，</p>
+<div class="math notranslate nohighlight">
+\[\sum_{j=1}^n c_j x_j^{\star} =\sum_{i=1}^m\sum_{j=1}^n y_i^{\star} a_{ij} x_j^{\star}\]</div>
+<p>再根据 结论 2，可得 <span class="math notranslate nohighlight">\(\mathbf x^{\star}, \mathbf y^{\star}\)</span> 分别是 <a class="reference internal" href="#equation-lp2">(2)</a> 和 <a class="reference internal" href="#equation-lp3">(3)</a> 的最优解。</p>
+<p><strong>仅当</strong> 根据 定理 1 的证明，可知</p>
+<div class="math notranslate nohighlight">
+\[\sum_{j=1}^n c_j x_j^{\star} \le \sum_{i=1}^m \sum_{j=1}^n y_i^{\star}a_{ij} x_j^{\star} \le \sum_{i=1}^m y_i^{\star}b_i\]</div>
+<p>根据对偶定理，如果 <span class="math notranslate nohighlight">\(\mathbf x^{\star}\)</span> 和 <span class="math notranslate nohighlight">\(\mathbf y^{\star}\)</span> 是最优解，那么最优值相等即，上面不等式最左侧等于最右侧，也就是说，两个不等式中等式关系都成立， 于是有</p>
+<div class="math notranslate nohighlight" id="equation-lp7">
+<span class="eqno">(7)<a class="headerlink" href="#equation-lp7" title="Permalink to this equation">¶</a></span>\[\sum_{j=1}^n \left(c_j - \sum_{i=1}^m y_i^{\star} a_{ij}\right)x_j^{\star}=0\]</div>
+<p>由于 <span class="math notranslate nohighlight">\(\mathbf x^{\star}\)</span> 和 <span class="math notranslate nohighlight">\(\mathbf y^{\star}\)</span> 是最优解，自然也是可行解，所以 <span class="math notranslate nohighlight">\(c_j - \sum_{i=1}^m y_i^{\star} a_{ij} \le 0\)</span>，当 <span class="math notranslate nohighlight">\(c_j - \sum_{i=1}^m y_i^{\star} a_{ij} = 0\)</span> 时，<a class="reference internal" href="#equation-lp7">(7)</a> 式中对应的求和项（item） 为 0，所以就等价于 <span class="math notranslate nohighlight">\(c_j - \sum_{i=1}^m y_i^{\star} a_{ij}&lt;0\)</span> 对应的求和项相加，而 <span class="math notranslate nohighlight">\(x_j^{\star} \ge 0\)</span>，所以 <span class="math notranslate nohighlight">\(\left(c_j - \sum_{i=1}^m y_i^{\star} a_{ij}\right)x_j^{\star} \le 0\)</span>，要使得相加之和为 0，则必须每一项都为 0，故 <span class="math notranslate nohighlight">\(x_j^{\star}=0\)</span>，其中 <span class="math notranslate nohighlight">\(j\)</span> 满足 <span class="math notranslate nohighlight">\(\sum_{i=1}^m y_i^{\star} a_{ij}&gt;c_j\)</span> 。类似地，可知，当 <span class="math notranslate nohighlight">\(\sum_{j=1}^n a_{ij}x_j^{\star}&lt;b_i\)</span> 时有 <span class="math notranslate nohighlight">\(y_i^{\star}=0\)</span> 。<span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p><a class="reference internal" href="#equation-lp5">(5)</a> 和 <a class="reference internal" href="#equation-lp6">(6)</a> 式也称互补松弛条件。<span class="math notranslate nohighlight">\(x_j^{\star}&gt;0\)</span> 严格不等关系，使得 <span class="math notranslate nohighlight">\(x_j^{\star}\)</span> 需要引入一个松弛变量，这意味着对偶问题中的相对应的互补约束条件可以取得等式关系 <span class="math notranslate nohighlight">\(\sum_{i=1}^m y_i^{\star} a_{ij} =c_j\)</span>。反过来讲，如果 <span class="math notranslate nohighlight">\(\sum_{i=1}^m y_i^{\star} a_{ij} &gt;c_j\)</span> 取严格不等，那么其对偶问题中的约束必然是 <span class="math notranslate nohighlight">\(x_j^{\star}=0\)</span></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./intro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">前言</a>
+    <a class='right-next' id="next-link" href="../algorithm/pivot.html" title="next page">转轴操作</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By JianjianSha<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

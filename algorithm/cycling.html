@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>循环 &#8212; 线性规划翻译稿</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="泛化对偶性" href="duality.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">线性规划翻译稿</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  基本介绍
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro/intro.html">
+   简介
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  算法
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="pivot.html">
+   转轴操作
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pivot_mad.html">
+   单纯形法
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="simplex.html">
+   单纯形法
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="duality.html">
+   泛化对偶性
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   循环
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/algorithm/cycling.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/JianjianSha/linear_programming"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/JianjianSha/linear_programming/issues/new?title=Issue%20on%20page%20%2Falgorithm/cycling.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   避免循环
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>循环<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>根据前面 单纯形法的转轴规则，如果所选转轴点的所在行最后一个元素 <span class="math notranslate nohighlight">\(b_{i_0}=0\)</span>，那么转轴操作并没有带来多少进展，即 <span class="math notranslate nohighlight">\(\hat b_k \ge b_k\)</span> 中等号成立。实际上，很有可能经过一系列的转轴操作后，单纯形表回到最初状态。这就导致死循环。</p>
+<p><strong>词典顺序</strong></p>
+<p>给定两个不相等的 n-dim 向量 <span class="math notranslate nohighlight">\(\mathbf r \neq \mathbf s\)</span>，称 <span class="math notranslate nohighlight">\(\mathbf r\)</span> 按词典顺序地小于 <span class="math notranslate nohighlight">\(\mathbf s\)</span>，记作 <span class="math notranslate nohighlight">\(\mathbf r \prec \mathbf s\)</span>，如果：<span class="math notranslate nohighlight">\(\mathbf {r, s}\)</span> 中第一个不相等的元素有 <span class="math notranslate nohighlight">\(r_k &lt; s_k\)</span>，其中 <span class="math notranslate nohighlight">\(r_1=s_1,\cdots, r_{k-1}=s_{k-1}\)</span> 。</p>
+<p>例如 <span class="math notranslate nohighlight">\((0,3,2,3) \prec (1,2,2,-1) \prec (1,3,-100,-2)\)</span> 。</p>
+<div class="section" id="id2">
+<h2>避免循环<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>在单纯形表中 b 列的右侧增加一个 m 阶单位矩阵，在 <span class="math notranslate nohighlight">\(-\mathbf c\)</span> 行 元素 <span class="math notranslate nohighlight">\(v\)</span> 的右侧增加一个向量 <span class="math notranslate nohighlight">\((c_{n+1},\cdots, c_{n+m})\)</span>，此向量初始为 <span class="math notranslate nohighlight">\(\mathbf 0\)</span> 。单纯形表如下</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array} {c|cccc|ccccc}
+&amp; x_1 &amp; x_2 &amp; \cdots &amp; x_n &amp; \\
+\hline \\
+y_1 &amp; a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} &amp; b_1 &amp; 1 &amp; 0 &amp; \cdots &amp; 0\\
+y_2 &amp; a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} &amp; b_2 &amp; 0 &amp; 1 &amp; \cdots &amp; 0\\
+\vdots &amp; \vdots &amp; \vdots &amp; &amp; \vdots &amp; \vdots &amp; &amp; &amp; \vdots \\
+y_m &amp; a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn} &amp; b_m &amp; 0 &amp; 0 &amp; \cdots &amp; 1\\
+\hline \\
+&amp; -c_1 &amp; -c_2 &amp; \cdots &amp; -c_n &amp; v &amp; c_{n+1} &amp; c_{n+2} &amp; \cdots &amp; c_{n+m} 
+\end{array}\end{split}\]</div>
+<p>记 <span class="math notranslate nohighlight">\(\mathbf b_1=(b_1,1,0,\cdots,0), \ldots, \mathbf b_m=(b_m,0,0,\cdots, 1)\)</span>，<span class="math notranslate nohighlight">\(\mathbf v = (v,c_{n+1},\cdots, c_{n+m})\)</span> 。使用与之前相同的转轴规则，但是使用 <span class="math notranslate nohighlight">\(\mathbf b_i\)</span> 代替 <span class="math notranslate nohighlight">\(b_i\)</span>，并使用词典顺序比较。</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./algorithm"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="duality.html" title="previous page">泛化对偶性</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By JianjianSha<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

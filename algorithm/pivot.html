@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>转轴操作 &#8212; 线性规划翻译稿</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="单纯形法" href="pivot_mad.html" />
+    <link rel="prev" title="简介" href="../intro/intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">线性规划翻译稿</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  基本介绍
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro/intro.html">
+   简介
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  算法
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   转轴操作
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pivot_mad.html">
+   单纯形法
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="simplex.html">
+   单纯形法
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="duality.html">
+   泛化对偶性
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cycling.html">
+   循环
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/algorithm/pivot.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/JianjianSha/linear_programming"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/JianjianSha/linear_programming/issues/new?title=Issue%20on%20page%20%2Falgorithm/pivot.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   转轴操作
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   例子
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>转轴操作<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>考虑以下线性方程组</p>
+<div class="math notranslate nohighlight" id="equation-pivot1">
+<span class="eqno">(8)<a class="headerlink" href="#equation-pivot1" title="Permalink to this equation">¶</a></span>\[\mathbf y^{\top}A=\mathbf s^{\top}\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\mathbf y^{\top}=(y_1,\cdots,y_m)\)</span>，<span class="math notranslate nohighlight">\(\mathbf s^{\top}=(s_1,\cdots, s_n)\)</span> ，且</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A=\begin{pmatrix}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
+\end{pmatrix}\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\mathbf s\)</span> 是因变量向量，其依赖于独立变量向量 <span class="math notranslate nohighlight">\(\mathbf y\)</span>，假设我们交换一个因变量与一个独立变量，例如 <span class="math notranslate nohighlight">\(s_j\)</span> 和 <span class="math notranslate nohighlight">\(y_i\)</span>，那么只要 <span class="math notranslate nohighlight">\(a_{ij}\neq 0\)</span>，这种交换就可以实现，求 <span class="math notranslate nohighlight">\(y_i\)</span> 的表达式</p>
+<div class="math notranslate nohighlight" id="equation-pivot2">
+<span class="eqno">(9)<a class="headerlink" href="#equation-pivot2" title="Permalink to this equation">¶</a></span>\[y_i=\frac 1 {a_{ij}}(-y_1a_{1j}-\cdots-y_{i-1}a_{(i-1)j}+s_j-y_{i+1}a_{(i+1)j}-\cdots-y_m a_{mj})\]</div>
+<p>代入方程组各等式，得</p>
+<div class="math notranslate nohighlight" id="equation-pivot3">
+<span class="eqno">(10)<a class="headerlink" href="#equation-pivot3" title="Permalink to this equation">¶</a></span>\[y_1\left(a_{1k}-\frac {a_{ik}a_{1j}}{a_{ij}}\right)+\cdots+s_j\left(\frac {a_{ik}}{a_{ij}}\right)+\cdots +y_m\left(a_{mk}-\frac {a_{ik}a_{mj}}{a_{ij}}\right)=s_k\]</div>
+<p>显然当 <span class="math notranslate nohighlight">\(k=j\)</span> 时，上式变为 <span class="math notranslate nohighlight">\(s_j=s_j\)</span>，这是因为经过交换后， <span class="math notranslate nohighlight">\(s_j\)</span> 变成独立变量，所以第 <span class="math notranslate nohighlight">\(j\)</span> 个等式由 <a class="reference internal" href="#equation-pivot2">(9)</a> 给出。将交换后的方程组展开显示如下</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{matrix} y_1 \hat a_{11}+\cdots+s_j  \hat a_{i1}+\cdots + y_m \hat a_{m1}= s_1 \\
+ \vdots \\
+ y_1\hat a_{1j}+\cdots+s_j  \hat a_{ij}+\cdots + y_m \hat a_{mj}= y_i \\
+\vdots \\
+y_1\hat a_{1n}+\cdots+s_j  \hat a_{in}+\cdots + y_m \hat a_{mn}= s_n
+\end{matrix}\end{split}\]</div>
+<p>每个等式对应新的参数矩阵 <span class="math notranslate nohighlight">\(\hat A\)</span> 的一列，<span class="math notranslate nohighlight">\(\hat A\)</span> 可根据 <a class="reference internal" href="#equation-pivot2">(9)</a> 和 <a class="reference internal" href="#equation-pivot3">(10)</a> 式得到，观察可知，第 <span class="math notranslate nohighlight">\(i\)</span> 行和第 <span class="math notranslate nohighlight">\(j\)</span> 列比较特殊，故分四种情况：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned} \hat a_{ij} &amp;=\frac 1 {a_{ij}}\\
+\hat a_{hj}&amp;=-\frac {a_{hj}}{a_{ij}} \quad h\neq i\\
+\hat a_{ik}&amp;=\frac {a_{ik}}{a_{ij}} \quad k \neq j\\
+\hat a_{hk}&amp;=a_{hk}-\frac {a_{ik}a_{hj}}{a_{ij}} \quad k\neq j, h \neq i
+\end{aligned}\end{split}\]</div>
+<p>使用表格展示这一变换过程，</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{c|ccccc|}
+&amp; s_1 &amp; \cdots&amp; s_j &amp;\cdots&amp; s_n \\
+\hline
+y_1 &amp; a_{11}&amp;\cdots &amp;a_{1j}&amp;\cdots&amp; a_{1n}\\
+\vdots &amp; \vdots &amp; &amp; \vdots &amp;&amp; \vdots\\
+y_i &amp; a_{i1} &amp; \cdots &amp; [a_{ij}] &amp; \cdots &amp; a_{in}\\
+\vdots &amp; \vdots &amp; &amp; \vdots &amp;&amp; \vdots \\
+y_m &amp; a_{m1} &amp; \cdots &amp; a_{mj} &amp; \cdots &amp; a_{mn}\\
+\hline
+\end{array}
+\quad 
+\longrightarrow
+\quad 
+\begin{array}{c|ccccc|}
+&amp; s_1 &amp; \cdots&amp; y_i &amp;\cdots&amp; s_n \\
+\hline
+y_1 &amp; \hat a_{11}&amp;\cdots &amp;\hat a_{1j}&amp;\cdots&amp; \hat a_{1n}\\
+\vdots &amp; \vdots &amp; &amp; \vdots &amp;&amp; \vdots\\
+s_j &amp; \hat a_{i1} &amp; \cdots &amp; \hat a_{ij} &amp; \cdots &amp; \hat a_{in}\\
+\vdots &amp; \vdots &amp; &amp; \vdots &amp;&amp; \vdots \\
+y_m &amp; \hat a_{m1} &amp; \cdots &amp; \hat a_{mj} &amp; \cdots &amp; \hat a_{mn}\\
+\hline
+\end{array}\end{split}\]</div>
+<p>称 <span class="math notranslate nohighlight">\(a_{ij}\)</span> 为转轴点（pivot），在上面左侧表格，我们将转轴点 <span class="math notranslate nohighlight">\(a_{ij}\)</span> 用方框标出，</p>
+<p>总结上面四种情况的系数操作：</p>
+<ol class="simple">
+<li><p>转轴点位置：取倒数</p></li>
+<li><p>与转轴点同一列：取相反数，然后再除以转轴点的系数</p></li>
+<li><p>与转轴点同一行：除以转轴点系数</p></li>
+<li><p>其他位置：将此位置分别映射到转轴点所在的行和列，取两个映射位置上的系数的乘积，再除以转轴点系数，最后从此位置的系数中减去刚才得到的商。</p></li>
+</ol>
+<p>用符号表示则为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{|lr|}
+\hline
+[p] &amp; r \\
+c &amp; q \\
+\hline
+\end{array}
+\quad
+\longrightarrow
+\quad
+\begin{array}{|lr|}
+\hline
+1/p &amp; r/p \\
+-c/p &amp; q-(rc/p) \\
+\hline
+\end{array}\end{split}\]</div>
+</div>
+<div class="section" id="id2">
+<h1>例子<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}\begin{array}{c|ccc|}
+&amp; s_1 &amp; s_2&amp; s_3 \\
+\hline
+y_1 &amp; 3 &amp; 1 &amp; 5\\
+y_2 &amp; [2]  &amp; -3 &amp; 1\\
+y_3 &amp; 0 &amp; 3 &amp; 1\\
+\hline
+\end{array}\end{split}\\\begin{split}\quad
+\longrightarrow
+\quad
+\begin{array}{c|ccc|}
+&amp; y_2 &amp; s_2&amp; s_3 \\
+\hline
+y_1 &amp; -3/2 &amp; 11/2 &amp; 7/2\\
+s_1 &amp; 1/2  &amp; -3/2 &amp; 1/2\\
+y_3 &amp; 0 &amp; 3 &amp; [1]\\
+\hline
+\end{array}
+\quad
+\longrightarrow
+\quad \cdots\end{split}\end{aligned}\end{align} \]</div>
+<p>如果将 <span class="math notranslate nohighlight">\(y_1, \ y_2, \ y_3\)</span> 全部与 <span class="math notranslate nohighlight">\(s_1, \ s_2, \ s_3\)</span> 进行交换，那么最后得到的 <span class="math notranslate nohighlight">\(\hat A=A^{-1}\)</span>，这是因为 <span class="math notranslate nohighlight">\(\mathbf y^{\top}=\mathbf s^{\top} A^{-1}=\mathbf s^{\top} \hat A\)</span> ，这种方法可以求 <span class="math notranslate nohighlight">\(A^{-1}\)</span>，当然前提条件是矩阵是方阵，且全部转轴点的元素值非 0 。</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./algorithm"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../intro/intro.html" title="previous page">简介</a>
+    <a class='right-next' id="next-link" href="pivot_mad.html" title="next page">单纯形法</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By JianjianSha<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
